@@ -180,7 +180,7 @@ public class AirportRepository
                 return airport.getAirportName();
         }
 
-        return null;
+        return "null";
     }
     public int calculateRevenueOfAFlight(int flightId)
     {
