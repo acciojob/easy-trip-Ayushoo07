@@ -172,15 +172,18 @@ public class AirportRepository
     }
     public String getAirportNameFromFlightId(int flightId)
     {
-        City currentCity=flightDb.get(flightId).getFromCity();
-
-        for(Airport airport: airportDb.values())
+        if(flightDb.containsKey(flightId))
         {
-            if(airport.getCity()==currentCity)
-                return airport.getAirportName();
+            City currentCity=flightDb.get(flightId).getFromCity();
+
+            for(Airport airport: airportDb.values())
+            {
+                if(airport.getCity()==currentCity)
+                    return airport.getAirportName();
+            }
         }
 
-        return "null";
+        return null;
     }
     public int calculateRevenueOfAFlight(int flightId)
     {
