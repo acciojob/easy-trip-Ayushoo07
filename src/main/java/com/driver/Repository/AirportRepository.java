@@ -110,7 +110,7 @@ public class AirportRepository
     public double getShortestDurationOfPossibleBetweenTwoCities(City fromCity,City toCity)
     {
 
-        double minDuration=-1.;
+        double minDuration=Double.MAX_VALUE;
         for(Flight flight: flightDb.values())
         {
             if(flight.getFromCity()==fromCity && flight.getToCity()==toCity)
@@ -119,6 +119,9 @@ public class AirportRepository
                     minDuration=flight.getDuration();
             }
         }
+
+        if(minDuration==Double.MAX_VALUE)
+            return -1.;
 
         return minDuration;
 
