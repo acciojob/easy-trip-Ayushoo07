@@ -127,21 +127,27 @@ public class AirportRepository
 
     public int getNumberOfPeopleOn(Date date,String airportName)
     {
-        City currentCity = airportDb.get(airportName).getCity();
-
-        int cnt=0;
-        for(Flight flight: flightDb.values())
+        if(airportDb.containsKey(airportName))
         {
-            if(flight.getToCity()==currentCity || flight.getFromCity()==currentCity)
+
+            City currentCity = airportDb.get(airportName).getCity();
+
+            int cnt=0;
+            for(Flight flight: flightDb.values())
             {
-                if(flight.getFlightDate().compareTo(date)==0)
+                if(flight.getToCity()==currentCity || flight.getFromCity()==currentCity)
                 {
-                    cnt+=flightPassengerDb.get(flight.getFlightId()).size();
+                    if(flight.getFlightDate().compareTo(date)==0)
+                    {
+                        cnt+=flightPassengerDb.get(flight.getFlightId()).size();
+                    }
                 }
             }
+
+            return cnt;
         }
 
-        return cnt;
+        return 0;
     }
 
     public int calculateFlightFare(int flightId)
