@@ -27,6 +27,7 @@ public class Flight {
         this.maxCapacity = maxCapacity;
         this.flightDate = flightDate;
         this.duration = duration;
+
     }
 
     public int getFlightId() {
@@ -76,5 +77,6 @@ public class Flight {
     public void setDuration(double duration) {
         this.duration = duration;
     }
+
 
 }
